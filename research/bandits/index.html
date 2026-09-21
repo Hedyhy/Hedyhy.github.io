@@ -49,6 +49,18 @@
     font-size: 14.5px; font-weight: 600; padding: 13px 26px; border-radius: 6px;
   }
   .request-btn:hover { background: #E4DED2; }
+  .copy-row {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 16px; flex-wrap: wrap;
+  }
+  .copy-row .email-text { font-size: 13.5px; color: #C9C2B2; font-family: monospace; }
+  .copy-btn {
+    background: transparent; color: #C9C2B2; border: 1px solid #4A463D;
+    border-radius: 5px; padding: 5px 12px; font-size: 12.5px; font-family: inherit;
+    cursor: pointer;
+  }
+  .copy-btn:hover { background: #2B2822; color: #FAF7F1; }
+  .copy-btn.copied { color: #FAF7F1; border-color: #6B6659; }
 </style>
 </head>
 <body>
@@ -115,9 +127,41 @@
       Email to request full report
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
     </a>
+    <div class="copy-row">
+      <span class="email-text" id="emailText">e0960235@u.nus.edu</span>
+      <button class="copy-btn" id="copyBtn" type="button">Copy address</button>
+    </div>
   </div>
 
 </div>
+
+<script>
+  var copyBtn = document.getElementById('copyBtn');
+  var emailText = document.getElementById('emailText').textContent;
+  copyBtn.addEventListener('click', function () {
+    function done() {
+      copyBtn.textContent = 'Copied';
+      copyBtn.classList.add('copied');
+      setTimeout(function () {
+        copyBtn.textContent = 'Copy address';
+        copyBtn.classList.remove('copied');
+      }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(emailText).then(done, done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = emailText;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+</script>
 
 </body>
 </html>
