@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bandit Learning: Foundations and Thompson Sampling Proof Techniques · Yu Hanyue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "IBM Plex Sans", system-ui, sans-serif; background: #FAF7F1; color: #1E1C19; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; margin: 0; }
+  a { color: #33302A; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 32px 80px; }
+  header.top {
+    position: sticky; top: 0; z-index: 10; width: 100%;
+    background: rgba(250,247,241,0.92); backdrop-filter: blur(6px);
+    border-bottom: 1px solid #E4DED2; margin-bottom: 56px;
+  }
+  header.top .inner { max-width: 760px; margin: 0 auto; padding: 18px 32px; }
+  header.top a { font-size: 13.5px; color: #4B463D; text-decoration: none; display: flex; align-items: center; gap: 6px; font-weight: 500; }
+  .kicker { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #33302A; font-weight: 600; margin-bottom: 18px; }
+  h1.title { font-size: 32px; line-height: 1.2; font-weight: 600; margin-bottom: 18px; }
+  .meta { font-size: 14px; color: #6B6659; line-height: 1.8; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid #E4DED2; }
+  .meta strong { color: #423E36; font-weight: 500; }
+  section { margin-bottom: 48px; }
+  section h2 { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #33302A; font-weight: 600; margin-bottom: 20px; }
+  .abstract p { font-size: 15.5px; line-height: 1.75; color: #423E36; margin: 0 0 16px; }
+  .abstract p:last-child { margin-bottom: 0; }
+  .toc { list-style: none; margin: 0; padding: 0; }
+  .toc li { display: flex; align-items: baseline; gap: 10px; font-size: 15px; color: #423E36; padding: 7px 0; border-bottom: 1px dotted #E4DED2; }
+  .toc li:last-child { border-bottom: none; }
+  .toc .num { color: #8A8474; min-width: 20px; }
+  .toc .name { flex: 1; }
+  .toc .page { color: #8A8474; font-variant-numeric: tabular-nums; }
+  .toc .l1 { font-weight: 600; color: #1E1C19; margin-top: 6px; }
+  .toc .l2 { padding-left: 22px; }
+  .toc .l3 { padding-left: 44px; font-size: 14px; color: #6B6659; }
+  .request-box {
+    background: #1E1C19; color: #FAF7F1; border-radius: 8px;
+    padding: 36px 40px; text-align: center; margin-top: 8px;
+  }
+  .request-box h2 { color: #FAF7F1; font-family: "Fraunces", Georgia, serif; text-transform: none; letter-spacing: 0; font-size: 21px; margin-bottom: 10px; }
+  .request-box p { font-size: 14px; color: #B8B2A2; line-height: 1.7; max-width: 440px; margin: 0 auto 24px; }
+  .request-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #FAF7F1; color: #1E1C19; text-decoration: none;
+    font-size: 14.5px; font-weight: 600; padding: 13px 26px; border-radius: 6px;
+  }
+  .request-btn:hover { background: #E4DED2; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a href="../../index.html">&larr; Back to portfolio</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="kicker">Capstone Project · MA4198</div>
+  <h1 class="title">Bandit Learning: Foundations and Thompson Sampling Proof Techniques</h1>
+
+  <div class="meta">
+    <div><strong>Author:</strong> Yu Hanyue</div>
+    <div><strong>Supervisor:</strong> Prof. TAN Yan Fu, Vincent</div>
+    <div><strong>Department of Mathematics, National University of Singapore</strong> — Honours Year Project, Semester 2, AY2025/2026</div>
+  </div>
+
+  <section class="abstract">
+    <h2>Summary</h2>
+    <p>This report explores the theoretical and mathematical foundations of Multi-Armed Bandit (MAB) algorithms, focusing on the fundamental trade-off between exploration and exploitation. It establishes the measure-theoretic groundwork and systematically reviews canonical algorithms, including ETC and various UCB extensions (such as MOSS and KL-UCB), alongside their corresponding theoretical lower bounds, before providing an in-depth theoretical exposition of Thompson Sampling (TS). The primary scope of the latter half is to rigorously dissect, reconstruct, and compare two distinct methodologies for deriving logarithmic regret bounds for TS: the worst-case frequentist analysis and the symmetry-based Bayesian approach.</p>
+    <p>Independent contributions include a comparative visual analysis of UCB-type algorithms (Section 2.2), a rigorous derivation of the minimax lower bound Ω(√kn) via both the Bretagnolle–Huber construction and an alternative formulation from Pinsker's inequality (Section 2.3.2), a fully substantiated reconstruction of the Bayesian regret proof for Thompson Sampling that fills in technical steps left as exercises in the referenced textbook (Section 3.2.2), and a comparative synthesis of the Agrawal–Goyal and Lattimore–Szepesvári proof techniques that unifies their perspectives on how Thompson Sampling achieves robustness across analytical frameworks (Section 3.2.3).</p>
+  </section>
+
+  <section>
+    <h2>Contents</h2>
+    <ul class="toc">
+      <li class="l1"><span class="name">1&nbsp;&nbsp;Introduction</span><span class="page">4</span></li>
+      <li class="l1"><span class="name">2&nbsp;&nbsp;Background and Bandit Foundations</span><span class="page">5</span></li>
+      <li class="l2"><span class="name">2.1&nbsp;&nbsp;Measure-Theoretic Foundations</span><span class="page">5</span></li>
+      <li class="l2"><span class="name">2.2&nbsp;&nbsp;Fundamental Bandit Algorithms and Lower Bounds</span><span class="page">5</span></li>
+      <li class="l3"><span class="name">2.2.1&nbsp;&nbsp;The Explore-Then-Commit (ETC) Algorithm</span><span class="page">6</span></li>
+      <li class="l3"><span class="name">2.2.2&nbsp;&nbsp;The Upper Confidence Bound (UCB) Algorithm</span><span class="page">6</span></li>
+      <li class="l3"><span class="name">2.2.3&nbsp;&nbsp;Asymptotically Optimal Upper Confidence Bound</span><span class="page">7</span></li>
+      <li class="l3"><span class="name">2.2.4&nbsp;&nbsp;Minimax Optimality: The MOSS Algorithm</span><span class="page">7</span></li>
+      <li class="l3"><span class="name">2.2.5&nbsp;&nbsp;Exploiting Distributional Structure: The KL-UCB Algorithm</span><span class="page">8</span></li>
+      <li class="l2"><span class="name">2.3&nbsp;&nbsp;The Theoretical Benchmarks: Lower Bounds in Bandits</span><span class="page">10</span></li>
+      <li class="l3"><span class="name">2.3.1&nbsp;&nbsp;Instance-Dependent Lower Bounds</span><span class="page">10</span></li>
+      <li class="l3"><span class="name">2.3.2&nbsp;&nbsp;Minimax Lower Bounds: The Adversarial Trap</span><span class="page">11</span></li>
+      <li class="l1"><span class="name">3&nbsp;&nbsp;Thompson Sampling and Proof Techniques</span><span class="page">12</span></li>
+      <li class="l2"><span class="name">3.1&nbsp;&nbsp;Introduction to Thompson Sampling</span><span class="page">12</span></li>
+      <li class="l3"><span class="name">3.1.1&nbsp;&nbsp;Bayesian Foundations and Conjugate Priors</span><span class="page">12</span></li>
+      <li class="l3"><span class="name">3.1.2&nbsp;&nbsp;The Beta-Bernoulli Conjugacy</span><span class="page">12</span></li>
+      <li class="l3"><span class="name">3.1.3&nbsp;&nbsp;The Thompson Sampling Algorithm</span><span class="page">13</span></li>
+      <li class="l2"><span class="name">3.2&nbsp;&nbsp;Comparative Analysis of Proof Techniques for Thompson Sampling</span><span class="page">13</span></li>
+      <li class="l3"><span class="name">3.2.1&nbsp;&nbsp;Agrawal–Goyal Proof Recap</span><span class="page">14</span></li>
+      <li class="l3"><span class="name">3.2.2&nbsp;&nbsp;Lattimore's Bayesian Perspective</span><span class="page">18</span></li>
+      <li class="l3"><span class="name">3.2.3&nbsp;&nbsp;Comparative Discussion</span><span class="page">25</span></li>
+      <li class="l1"><span class="name">A&nbsp;&nbsp;Appendix</span><span class="page">27</span></li>
+      <li class="l2"><span class="name">A.1&nbsp;&nbsp;Definitions</span><span class="page">27</span></li>
+      <li class="l2"><span class="name">A.2&nbsp;&nbsp;Key Lemmas</span><span class="page">28</span></li>
+      <li class="l2"><span class="name">A.3&nbsp;&nbsp;Proof of the Bayesian Identity</span><span class="page">28</span></li>
+      <li class="l2"><span class="name">A.4&nbsp;&nbsp;ℙ(𝓔ᶜ) ≤ 2nkδ</span><span class="page">28</span></li>
+    </ul>
+  </section>
+
+  <div class="request-box">
+    <h2>Request the full report</h2>
+    <p>The complete write-up (29 pages, including all derivations and appendices) is available on request.</p>
+    <a class="request-btn" href="mailto:e0960235@u.nus.edu?subject=Request%3A%20MA4198%20Bandit%20Learning%20Report&body=Hi%20Hanyue%2C%0A%0AI'd%20like%20to%20request%20the%20full%20MA4198%20capstone%20report%20on%20Bandit%20Learning%2FThompson%20Sampling.%0A%0AThanks!">
+      Email to request full report
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
