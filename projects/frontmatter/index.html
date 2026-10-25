@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FrontMatter · UCWS Singapore Hackathon 2026 — Yu Hanyue</title>
+<meta name="description" content="FrontMatter: an AI-powered storefront lease feasibility platform for Singapore small businesses. Top 20 Finalist, UCWS Singapore Hackathon 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root { --bg:#FAF7F1; --ink:#1E1C19; --body:#423E36; --muted:#7A7466; --line:#E4DED2; --accent:#33302A; --card:#FFFFFF; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans",system-ui,sans-serif; }
+  h1,h2,h3 { font-family:"Fraunces",Georgia,serif; margin:0; font-weight:600; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { color:#000; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+  nav { border-bottom:1px solid var(--line); }
+  nav .wrap { padding-top:18px; padding-bottom:18px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .brand { font-family:"Fraunces",Georgia,serif; font-size:19px; font-weight:600; color:var(--ink); }
+  .back { font-size:14px; font-weight:500; color:#4B463D; display:inline-flex; align-items:center; gap:6px; }
+  header { padding:64px 0 36px; }
+  .eyebrow { font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--accent); margin-bottom:14px; }
+  h1 { font-size:48px; line-height:1.05; }
+  .tagline { font-family:"Fraunces",Georgia,serif; font-style:italic; font-size:20px; color:#4B463D; margin-top:12px; }
+  .lede { font-size:16px; line-height:1.75; color:var(--body); max-width:720px; margin:18px 0 0; }
+  .meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .chip { font-size:13px; padding:6px 12px; border:1px solid var(--line); border-radius:5px; color:var(--body); background:transparent; }
+  .chip.strong { background:var(--ink); border-color:var(--ink); color:#FAF7F1; font-weight:600; }
+  section { padding:40px 0; border-top:1px solid var(--line); }
+  h2 { font-size:24px; margin-bottom:8px; }
+  .sub { font-size:15px; color:var(--muted); margin:0 0 22px; line-height:1.6; }
+  p, li { font-size:15.5px; line-height:1.75; color:var(--body); }
+  figure { margin:0; }
+  figcaption { font-size:13px; color:var(--muted); margin-top:10px; line-height:1.6; }
+  .frame { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#000; }
+  .frame img, .frame video { width:100%; height:auto; display:block; }
+  .light { background:var(--card); }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .stat { border-top:2px solid var(--ink); padding-top:14px; }
+  .stat b { display:block; font-family:"Fraunces",Georgia,serif; font-size:40px; font-weight:600; color:var(--ink); line-height:1; }
+  .stat span { display:block; font-size:14px; color:var(--body); margin-top:8px; line-height:1.5; }
+  .steps { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; counter-reset:s; }
+  .steps li { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--card); counter-increment:s; }
+  .steps li::before { content:"0" counter(s); display:block; font-size:12px; letter-spacing:.12em; color:var(--muted); font-weight:600; margin-bottom:6px; }
+  .steps b { display:block; font-size:15.5px; color:var(--ink); margin-bottom:4px; }
+  .steps span { display:block; font-size:14px; line-height:1.6; color:var(--body); }
+  .two { display:grid; grid-template-columns:1fr 1.25fr; gap:18px; align-items:start; }
+  .layers { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .layer { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--card); }
+  .layer h3 { font-size:18px; margin-bottom:6px; }
+  .layer p { margin:0; font-size:14.5px; line-height:1.65; }
+  .stack { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .role { display:grid; grid-template-columns:1fr; gap:14px; }
+  .me { border:1px solid var(--ink); border-radius:8px; padding:22px; background:var(--card); }
+  .me .label { font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+  .me h3 { font-size:22px; margin:6px 0 10px; }
+  .me blockquote { margin:0; font-family:"Fraunces",Georgia,serif; font-style:italic; font-size:18px; color:var(--ink); }
+  .team { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .member { border:1px solid var(--line); border-radius:8px; padding:16px; }
+  .member b { display:block; font-size:15.5px; color:var(--ink); }
+  .member span { display:block; font-size:13.5px; color:var(--body); margin-top:4px; line-height:1.5; }
+  .member.you { border-color:var(--ink); }
+  .downloads { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 18px; border-radius:6px; border:1px solid var(--ink); font-weight:600; font-size:14.5px; color:var(--ink); }
+  .btn.solid { background:var(--ink); color:#FAF7F1; }
+  .btn:hover { background:#fff; color:var(--ink); }
+  .btn.solid:hover { background:#000; color:#fff; }
+  footer { padding:40px 0 56px; font-size:13px; color:var(--muted); border-top:1px solid var(--line); }
+  @media (max-width:760px){
+    h1{font-size:36px;} header{padding:44px 0 28px;}
+    .stats, .steps, .two, .layers { grid-template-columns:1fr; }
+    .team { grid-template-columns:1fr 1fr; }
+    .stat b { font-size:34px; }
+  }
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="../../">Yu Hanyue</a>
+  <a class="back" href="../../#experience">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+</div></nav>
+
+<main class="wrap">
+  <header>
+    <div class="eyebrow">UCWS Singapore Hackathon 2026</div>
+    <h1>FrontMatter <span style="font-weight:400;">观铺</span></h1>
+    <div class="tagline">Find the opportunity. Measure the risk.</div>
+    <p class="lede">An AI-powered storefront feasibility platform that helps small merchants in Singapore evaluate space, rent, risk and business potential before signing a lease. Users upload a shop photo and lease details; FrontMatter returns a traceable 0–100 lease score, risk flags, a cash-flow model and what-if controls.</p>
+    <div class="meta">
+      <span class="chip strong">Top 20 Finalist</span>
+      <span class="chip">June 2026</span>
+      <span class="chip">Team of 4 · NUS &amp; NTU</span>
+      <span class="chip">My role: Analysis &amp; Product Strategy Lead</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Demo video</h2>
+    <p class="sub">2:46 · problem, product walkthrough and financial stress test.</p>
+    <figure class="frame">
+      <video controls preload="metadata" playsinline poster="demo-poster.jpg" width="960" height="528">
+        <source src="demo.mp4" type="video/mp4">
+        Your browser does not support embedded video. <a href="demo.mp4">Download the demo</a>.
+      </video>
+    </figure>
+  </section>
+
+  <section>
+    <h2>The problem</h2>
+    <p class="sub">Before the first customer walks in, the lease has already started counting. Small founders rely on brokers, listing photos, Google Maps and rough spreadsheets that never add up to one decision.</p>
+    <div class="stats">
+      <div class="stat"><b>307</b><span>F&amp;B closures per month in Singapore in 2025, up from 254 in 2024</span></div>
+      <div class="stat"><b>60%</b><span>of outlets closed Jan–Oct 2025 had operated for less than five years</span></div>
+      <div class="stat"><b>82%</b><span>of those under-five-year closures had never made a profit</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <p class="sub">One workflow connects the storefront image, lease terms, location context and financial risk.</p>
+    <ol class="steps">
+      <li><b>Lease inputs</b><span>Rent, area, lease term, fit-out budget and business type.</span></li>
+      <li><b>Spatial AI</b><span>Reads frontage, layout, visibility and utilities from storefront or floorplan photos.</span></li>
+      <li><b>Local grounding</b><span>Nearby merchants, competition and Singapore commercial context via Google Places.</span></li>
+      <li><b>F&amp;B rule check</b><span>Water, power, gas, floor trap, grease trap, exhaust, wastewater and approved use.</span></li>
+      <li><b>Economics model</b><span>NPV, IRR, discounted payback, break-even customers and BASE / DOWN / SEVERE scenarios.</span></li>
+      <li><b>Decision report</b><span>Score breakdown, risk flags, verdict and live what-if controls for traffic, ticket size and rent.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>The product</h2>
+    <p class="sub">The live prototype: lease intake on the left, the decision workspace on the right.</p>
+    <div class="two">
+      <figure>
+        <div class="frame"><img src="ui-input.jpg" alt="FrontMatter input screen with photo upload, lease fields, F&amp;B readiness checks, site location and candidate comparison" width="1100" height="1512" loading="lazy"></div>
+        <figcaption>Intake: site photo, lease profile and F&amp;B readiness.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="ui-result.jpg" alt="FrontMatter result dashboard showing a 78/100 lease score, spatial operating plan, public market evidence, discounted cash flow and what-if simulator" width="1280" height="1565" loading="lazy"></div>
+        <figcaption>Decision workspace: lease score, AI operating plan, DCF scenarios and what-if simulator.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Not a chatbot: a quantified lease evaluation engine</h2>
+    <p class="sub">Hybrid scoring: 60% deterministic rules, 40% AI judgement, so every score is traceable.</p>
+    <div class="layers">
+      <div class="layer"><h3>Vision layer</h3><p>Turns storefront and interior photos into a structured spatial blueprint, flagging missing evidence for F&amp;B setup.</p></div>
+      <div class="layer"><h3>Grounding layer</h3><p>Anchors the site in Singapore’s real commercial and competitive context using map data and official datasets.</p></div>
+      <div class="layer"><h3>Rule layer</h3><p>Separates “looks suitable” from “can operate” by checking hard F&amp;B infrastructure and regulatory constraints.</p></div>
+      <div class="layer"><h3>Financial layer</h3><p>Converts assumptions into NPV, IRR, payback and downside scenarios, showing what rent or traffic must change.</p></div>
+    </div>
+    <div class="stack" aria-label="Tech stack">
+      <span class="chip">Next.js</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span><span class="chip">Leaflet</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL + pgvector</span><span class="chip">Redis</span><span class="chip">GLM-4.1V vision</span><span class="chip">Google Places</span><span class="chip">Docker Compose</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Team</h2>
+    <p class="sub">Engineering builds the system. Finance defines the case. Data measures the risk. Product makes it clear.</p>
+    <div class="me" style="margin-bottom:16px;">
+      <div class="label">My role</div>
+      <h3>Analysis &amp; Product Strategy Lead</h3>
+      <blockquote>“Translate market insights into strategic clarity.”</blockquote>
+    </div>
+    <div class="team">
+      <div class="member"><b>Ye Chixia</b><span>Technical Lead / System Architect · NTU</span></div>
+      <div class="member"><b>Gao Qi</b><span>Business &amp; Financial Modelling Lead · NUS</span></div>
+      <div class="member you"><b>Yu Hanyue</b><span>Analysis &amp; Product Strategy Lead · NUS</span></div>
+      <div class="member"><b>Liu Ziyi</b><span>Product &amp; Spatial Intelligence Lead · NUS</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Recognition</h2>
+    <p class="sub">Selected as a Top 20 Finalist Project of UCWS Singapore Hackathon 2026 (10 June 2026).</p>
+    <figure class="frame light" style="max-width:720px;">
+      <img src="certificate.jpg" alt="UCWS Singapore Hackathon 2026 Top 20 Finalist certificate presented to Ye Chixia, Gao Qi, Yu Hanyue and Liu Ziyi for the project FrontMatter, dated June 10, 2026" width="1080" height="765" loading="lazy">
+    </figure>
+  </section>
+
+  <section>
+    <h2>Pitch materials</h2>
+    <p class="sub">A0 exhibition poster and the full pitch deck.</p>
+    <figure class="frame light">
+      <a href="FrontMatter_Poster_A0.pdf"><img src="poster-preview.jpg" alt="FrontMatter A0 poster covering the problem, workflow, sample output, technical edge, core model and go-to-market" width="1800" height="1274" loading="lazy"></a>
+    </figure>
+    <div class="downloads">
+      <a class="btn solid" href="FrontMatter_Pitch_Deck.pdf">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Pitch deck (PDF, 23 pages)
+      </a>
+      <a class="btn" href="FrontMatter_Poster_A0.pdf">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        A0 poster (PDF)
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© Yu Hanyue · <a href="mailto:e0960235@u.nus.edu">e0960235@u.nus.edu</a></div></footer>
+</body>
+</html>
